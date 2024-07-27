@@ -37,23 +37,23 @@ export function ChatPanel({
   const exampleMessages = [
     {
       heading: 'What are the',
-      subheading: 'trending memecoins today?',
-      message: `What are the trending memecoins today?`
+      subheading: 'runtime overhead limits in vertical optimizations?',
+      message: `If Zeta Reticula scales vertically while EinsteinDB scales horizontally?`
     },
     {
-      heading: 'What is the price of',
-      subheading: '$DOGE right now?',
-      message: 'What is the price of $DOGE right now?'
+      heading: 'What are the',
+      subheading: 'SEO implications of using MilevaDB?',
+      message: 'What are the SEO implications of using MilevaDB?'
     },
     {
-      heading: 'I would like to buy',
-      subheading: '42 $DOGE',
-      message: `I would like to buy 42 $DOGE`
+      heading: 'Zeta Reticula AI4DB'
+      subheading: 'is built with Next.js and Vercel AI SDK',
+      message: `Zeta Reticula's AI4DB chatbot built with Next.js and Vercel AI SDK with EinsteinDB and MilevaDB.`
     },
     {
-      heading: 'What are some',
-      subheading: `recent events about $DOGE?`,
-      message: `What are some recent events about $DOGE?`
+      heading: 'What is a good',
+      subheading: 'use case for MilevaDB?',
+      message: `What is a good use case for MilevaDB and EinsteinDB using Zeta Reticula?`
     }
   ]
 
