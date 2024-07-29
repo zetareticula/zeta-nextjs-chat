@@ -1,5 +1,6 @@
 import React from 'react'; // Add import statement for 'React' namespace
 
+
 import { SidebarDesktop } from '@/components/sidebar-desktop'
 
 interface ChatLayoutProps {
@@ -15,5 +16,7 @@ export default async function ChatLayout({ children }: ChatLayoutProps) {
     </div>
   )
 }
+
+
 
 

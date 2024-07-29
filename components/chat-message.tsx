@@ -15,6 +15,7 @@ export interface ChatMessageProps {
   message: Message
 }
 
+// Memoize the ReactMarkdown component to prevent re-rendering
 export function ChatMessage({ message, ...props }: ChatMessageProps) {
   return (
     <div

@@ -36,11 +36,17 @@ import { SpinnerMessage, UserMessage } from '@/components/stocks/message'
 import { Chat, Message } from '@/lib/types'
 import { auth } from '@/auth'
 
+
+//create a new chat id
 async function confirmPurchase(symbol: string, price: number, amount: number) {
   'use server'
 
+  //get the current AI state
   const aiState = getMutableAIState<typeof AI>()
 
+
+  //create a streamable UI for the purchasing message
+  // the purchasing message will be displayed to the user while the purchase is being processed
   const purchasing = createStreamableUI(
     <div className="inline-flex items-start gap-1 md:items-center">
       {spinner}
@@ -123,27 +129,31 @@ async function submitUserMessage(content: string) {
     ]
   })
 
+  //let textStream become a streamable value comprised of a string and a function that updates the string
   let textStream: undefined | ReturnType<typeof createStreamableValue<string>>
+
+  //let textNode become a React node
   let textNode: undefined | React.ReactNode
+
+
+  //create a streamable UI for the bot message that will be displayed to the user
+  //the bot message will be displayed to the user while the bot is processing the user's message
+  //the bot message will be updated with the bot's response
 
   const result = await streamUI({
     model: openai('gpt-3.5-turbo'),
     initial: <SpinnerMessage />,
     system: `\
-    You are a stock trading conversation bot and you can help users buy stocks, step by step.
-    You and the user can discuss stock prices and the user can adjust the amount of stocks they want to buy, or place an order, in the UI.
-    
-    Messages inside [] means that it's a UI element or a user event. For example:
-    - "[Price of AAPL = 100]" means that an interface of the stock price of AAPL is shown to the user.
-    - "[User has changed the amount of AAPL to 10]" means that the user has changed the amount of AAPL to 10 in the UI.
-    
-    If the user requests purchasing a stock, call \`show_stock_purchase_ui\` to show the purchase UI.
-    If the user just wants the price, call \`show_stock_price\` to show the price.
-    If you want to show trending stocks, call \`list_stocks\`.
-    If you want to show events, call \`get_events\`.
-    If the user wants to sell stock, or complete another impossible task, respond that you are a demo and cannot do that.
-    
-    Besides that, you can also chat with users and do some calculations if needed.`,
+    You are KleverAI, an assistant focused on addressing the needs of the elderly and those with disabilities.
+    At KleverAI our mission is to deliver intuitive, user-friendly, and accessible solutions to our users using AI.
+
+    KleverAI only answers questions related to geriatric care, health, and wellness. KleverAI steers away from long answers, opting instead
+    for concise and clear responses. KleverAI can accurately and effectively summarize information in a way that is useful and eligible.
+
+    If a user can put in something like "getting help to pay my bills", the KleverAI should respond with the main points of articles related to the subject.
+    Generate a list of non-profit and for-profit institutions where you source your response. If the user asks for a list of resources, the KleverAI should provide a list of resources.
+
+   KleverAI bot should distinguish between a question and a statement. If the user asks a question, the KleverAI should respond with an answer. If the user makes a statement, the KleverAI should respond with a statement.`,
     messages: [
       ...aiState.get().messages.map((message: any) => ({
         role: message.role,
@@ -157,6 +167,9 @@ async function submitUserMessage(content: string) {
         textNode = <BotMessage content={textStream.value} />
       }
 
+      //if the bot is done processing the user's message, the bot's response is displayed to the user
+      //the bot's response is added to the AI state as a message
+      //the bot's response is displayed as a bot message to the user
       if (done) {
         textStream.done()
         aiState.done({
@@ -173,7 +186,7 @@ async function submitUserMessage(content: string) {
       } else {
         textStream.update(delta)
       }
-
+      //return the textNode
       return textNode
     },
     tools: {

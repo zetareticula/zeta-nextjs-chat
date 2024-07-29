@@ -9,28 +9,26 @@ export function EmptyScreen() {
     <div className="mx-auto max-w-2xl px-4">
       <div className="flex flex-col gap-2 rounded-lg border bg-background p-8">
         <h1 className="text-lg font-semibold">
-          Welcome to Klever AI Chatbot!
+          Welcome to Zeta Reticula -- an EinsteinDB and MilevaDB AI Chatbot!
         </h1>
         <p className="leading-normal text-muted-foreground">
-          This is an open source AI chatbot app template built with{' '}
-          <ExternalLink href="https://nextjs.org">Next.js</ExternalLink>, the{' '}
+        Harnessing modern EinsteinDB for cause-effect vertex{' '}
+          <ExternalLink href="https://nextjs.org">Vertex</ExternalLink> matrix{' '}
           <ExternalLink href="https://sdk.vercel.ai">
-            Vercel AI SDK
+          calculations and simulated annealing.
           </ExternalLink>
-          , and{' '}
+          Integrating seamlessly with Command Query Responsibility Segregation (CQRS){' '}
           <ExternalLink href="https://vercel.com/storage/kv">
-            Vercel KV
+            using Zeta Reticula and EinsteinDB
           </ExternalLink>
           .
         </p>
         <p className="leading-normal text-muted-foreground">
-          It uses{' '}
+        At the heart of Zetareticula.com lies a cutting-edge tech stack, seamlessly blending Vercel, Prisma, EinsteinDB, and MaterialUI. {' '}
           <ExternalLink href="https://vercel.com/blog/ai-sdk-3-generative-ui">
-            React Server Components
+            Generative UI with Vercel AI SDK
           </ExternalLink>{' '}
-          to combine text with generative UI as output of the LLM. The UI state
-          is synced through the SDK so the model is aware of your interactions
-          as they happen.
+          An improved user experience, heightened conversion rates, and superior organic search ranking are just a few of the benefits of using Zeta Reticula.
         </p>
       </div>
     </div>
